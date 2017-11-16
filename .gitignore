@@ -1,5 +1,5 @@
 .idea/
-Installation/node_modules/
-Installation/platforms/platforms.json
-Installation/platforms/
-Installation/plugins/
+**/node_modules/
+**/platforms/platforms.json
+**/platforms/
+**/plugins/
