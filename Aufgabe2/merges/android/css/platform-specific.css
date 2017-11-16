@@ -1,0 +1,55 @@
+body{
+    background: black;
+    color: white;
+    font-size: 16px;
+}
+
+label{
+    padding: 8px 8px 6px 8px;
+}
+
+input[type='text'] {
+    /* You can set width to whatever you like */
+    width: 100%;
+    min-width: 140px;
+    font-family: "Roboto", "Droid Sans", sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 8px 8px 6px 8px;
+    position: relative;
+    display: block;
+    outline: none;
+    border: none;
+    color: white;
+    background: bottom left linear-gradient(#a9a9a9, #a9a9a9) no-repeat, bottom center linear-gradient(#a9a9a9, #a9a9a9) repeat-x, bottom right linear-gradient(#a9a9a9, #a9a9a9) no-repeat;
+    background-size: 1px 6px, 1px 1px, 1px 6px;
+}
+input[type='text']:hover, input[type='text']:focus {
+    background: bottom left linear-gradient(#0099cc, #0099cc) no-repeat, bottom center linear-gradient(#0099cc, #0099cc) repeat-x, bottom right linear-gradient(#0099cc, #0099cc) no-repeat;
+    background-size: 1px 6px, 1px 1px, 1px 6px;
+}
+
+input[type='button']{
+    width: 100%;
+    min-width: 140px;
+    min-height: 40px;
+    background: #444444;
+    color: white;
+    border-top-color: #505050;
+    border-left-color: #505050;
+    font-weight: 500;
+    border-bottom-width: 0;
+    border-right-width: 0;
+    font-size: inherit;
+}
+
+input[type='button']:active{
+    background: #32b6e6;
+}
+
+input[type='button']:focus{
+    border-top-color: #505050;
+    border-left-color: #505050;
+    border-bottom-width: 0;
+    border-right-width: 0;
+}
