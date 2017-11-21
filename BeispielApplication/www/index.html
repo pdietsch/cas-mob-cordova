@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Maps</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/platform-specific.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div class="main">
+<section class="header">
+    <ul>
+        <li data-link="index.html" class="menu-item active">
+            Maps
+        </li>
+        <li data-link="camera.html" class="menu-item">
+           Camera
+        </li>
+    </ul>
+</section>
+<section class="container">
+    <div class="datainput">
+        <div class="block">
+            <input id="geolocation-text" class="block-content" type="text" placeholder="Insert text"/>
+            <label id="geolocation-coordinate" class="block-content"></label>
+        </div>
+        <div class="block">
+            <input id="geolocation-add" class="block-content" type="button" value="Save">
+            <input id="geolocation-show" class="block-content" type="button" value="View on map">
+        </div>
+    </div>
+    <div id="map"></div>
+    <div class="datalist">
+        <ul id="geolist" class="geolist">
+        </ul>
+    </div>
+</section>
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script src="js/common/util.js"></script>
+<script src="js/common/position.js"></script>
+<script src="js/storage/geo-storage.js"></script>
+<script src="js/maps/google-map.js"></script>
+<script src="js/index.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>
