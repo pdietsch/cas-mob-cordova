@@ -1,0 +1,15 @@
+{
+  "name" : "ch-hsr-casmobile.beep",
+  "version" : "0.0.2",
+  "description" : "Provide simple Beep Api",
+  "cordova" : {
+    "id" : "ch-hsr-casmobile.beep",
+    "platforms" : [
+      "android"
+    ]
+  },
+  "keywords":[
+    "beep"
+  ],
+  "author" : "Patrik Dietschweiler"
+}
