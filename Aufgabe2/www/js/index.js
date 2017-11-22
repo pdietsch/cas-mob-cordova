@@ -23,7 +23,6 @@ var app = {
     onPause: function(e) { console.log(e)},
     onResume: function(e) { console.log(e)},
     onBackButton: function(e) {
-        this.map.back();
         e.preventDefault();
     },
     onVolumeDownButton: function(e) { navigator.notification.alert("Psssst")},
@@ -40,41 +39,53 @@ var app = {
     },
     
     initializeStorage : function() {
-        let self = this;
         this.storage = new GeolistStorage();
         this.storage.initializeDatabase(()=>{
-            self.storage.getAll((positions) =>self.appendAllPosition(positions));
+            this.storage.getAll()
+                .then(positions =>this.appendAllPosition(positions))
+                .catch(error => console.log(error.message));
         })
     },
 
     appendAllPosition : function(positions) {
-        $('.geolist').empty();
+        let geolist = document.getElementById("geolist");
+        geolist.innerHTML = "";
         for(position of positions){
-            this.appendPosition(position);
+            this.appendPosition(geolist, position);
         }
     },
 
-    appendPosition : function(position) {
-        $('.geolist').append('<li><a class="postion-link" href="#" data-id="'+position.id+'">' + position.text+ '</a><input data-id="'+position.id+'" class="position-delete" type="button" value="Delete"></li>');
+    appendPosition : function(parent, position) {
+        let template = document.createElement("template");
+        template.innerHTML = '<li><a class="postion-link" href="#" data-id="'+position.id+'">' + position.text+ '</a><input data-id="'+position.id+'" class="position-delete" type="button" value="Delete"></li>';
+        let childToAdd = template.content.firstChild;
+        parent.appendChild(childToAdd);
+        childToAdd.getElementsByClassName("position-link")[0].addEventListener("click",(event)=>{
+            this.storage.get(event.target.dataset.id)
+                .then(position=> this.map.setMarker(position.coordinate, position.text))
+                .catch(error => console.log(error.message));
+        });
+
+        childToAdd.getElementsByClassName("position-delete")[0].addEventListener("click",(event)=>{
+            this.storage.delete(event.target.dataset.id)
+                .then(() => this.storage.getAll()
+                    .then(positions =>this.appendAllPosition(positions))
+                    .catch(error => console.log(error.message)))
+                .catch(error => console.log(error.message));
+        });
     },
 
 
     registerEvents : function() {
-        let self = this;
-        $('#geolocation-add').click(()=>{
-            let text = $('#geolocation-text').val();
+        document.getElementById("geolocation-add").addEventListener("click", ()=>{
+            let text = document.getElementById('geolocation-text').value;
             if(!text){
                 navigator.notification.alert("Please insert a Text");
                 return;
             }
-            self.storage.add(text, (createdPosition) => self.appendPosition(createdPosition));
-        });
-
-
-        $('.geolist').on("click",".position-delete",(event)=>{
-            self.storage.delete($(event.target).data("id"),()=>{
-                self.storage.getAll((positions) =>self.appendAllPosition(positions));
-            });
+            this.storage.add(text, this.currentposition)
+                .then(createdPosition => this.appendPosition(document.getElementById("geolist"), createdPosition))
+                .catch(error => console.log(error.message));
         });
     },
 

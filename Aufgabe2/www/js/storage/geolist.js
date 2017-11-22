@@ -16,20 +16,22 @@ class GeolistStorage{
         //Create DataBase Table if not exist
     };
 
-    get(id, callback){
+    get(id){
 
     };
 
-    getAll(callback){
+    getAll(){
 
     };
 
 
-    add(text, callback){
-
+    add(text){
+        return new Promise((resolve, reject) =>{
+            resolve(new Position(0, text));
+        })
     };
 
-    delete(id, callback){
+    delete(id){
 
     };
 
