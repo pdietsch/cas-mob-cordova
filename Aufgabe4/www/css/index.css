@@ -1,0 +1,121 @@
+body{
+    height: 96vh;
+    position : relative;
+}
+
+.block{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.block>.block-content{
+    width: 100%;
+    margin-right: 5px;
+}
+
+.header{
+    height: 45px;
+}
+.header>ul{
+    margin: 0px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0px;
+}
+
+.header>ul>li{
+    flex-grow: 1;
+    list-style-type: none;
+    border-color: #888888;
+    border-bottom-color: white;
+    border-style: solid;
+    border-width: 1px;
+    padding: 8px;
+}
+
+.header>ul>li:active{
+    border-color: dodgerblue;
+}
+
+.header>ul>li.active{
+    padding-top: 15px;
+    font-weight: bold;
+    border-color: white;
+    border-bottom-width: 0px;
+}
+
+.main{
+    position:relative;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.container{
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+}
+
+.datalist{
+    overflow: scroll;
+    -webkit-overflow-scrolling: auto;
+    flex-basis: 120px;
+}
+
+.datainput{
+    flex-basis: 100px;
+    flex-grow: 1;
+}
+
+.geolist>li{
+    margin-bottom: 3px;
+    list-style-type: none;
+    display: flex;
+}
+.geolist>li>a{
+    width: 100%;
+    color: white;
+    padding-top: 10px;
+    padding-left: 5px;
+    border: solid 1px white;
+    margin-right: 5px;
+    text-decoration: none;
+}
+.geolist>li>input[type="button"]{
+    min-width: 80px;
+    width: 80px;
+}
+
+.geolist{
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
+
+#map{
+    height:100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#picture{
+    margin: auto;
+    max-width: 90vw;
+    max-height: 90vw;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
